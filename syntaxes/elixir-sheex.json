@@ -1,0 +1,112 @@
+{
+  "injectionSelector": "L:source.elixir -comment -text -string",
+  "name": "elixir-sheex",
+  "scopeName": "source.elixir.sheex",
+  "patterns": [
+    {
+      "comment": "Slime HEEx sigil with heredoc (double quotes)",
+      "name": "text.slime.embedded",
+      "begin": "\\s?(~H\"\"\")$",
+      "beginCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "end": "^\\s*(\"\"\"[a-z]*)$",
+      "endCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.slime"
+        }
+      ]
+    },
+    {
+      "comment": "Slime HEEx sigil with double quotes",
+      "name": "text.slime.embedded",
+      "begin": "~H\\\"",
+      "beginCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "end": "\\\"[a-z]*",
+      "endCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.slime"
+        }
+      ]
+    },
+    {
+      "comment": "HEEx sigil with square brackets",
+      "name": "text.slime.embedded",
+      "begin": "~H\\[",
+      "beginCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "end": "\\][a-z]*",
+      "endCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.slime"
+        }
+      ]
+    },
+    {
+      "comment": "HEEx sigil with parentheses",
+      "name": "text.slime.embedded",
+      "begin": "~H\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "end": "\\)[a-z]*",
+      "endCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.slime"
+        }
+      ]
+    },
+    {
+      "comment": "HEEx sigil with curly brackets",
+      "name": "text.slime.embedded",
+      "begin": "~H\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "end": "\\}[a-z]*",
+      "endCaptures": {
+        "0": {
+          "name": "string.quoted.double.heredoc.elixir"
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.slime"
+        }
+      ]
+    }
+  ]
+}

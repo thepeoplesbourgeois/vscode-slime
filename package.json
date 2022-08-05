@@ -23,7 +23,12 @@
         "languages": [{
             "id": "slime",
             "aliases": ["Slime", "slime"],
-            "extensions": [".slime", ".slim", ".slimleex"],
+            "extensions": [
+              ".slime",
+              ".slim",
+              ".slimleex",
+              ".sheex"
+            ],
             "configuration": "./language-configuration.json"
         }],
         "snippets": [
@@ -32,10 +37,19 @@
                 "path": "./snippets/snippets.json"
             }
         ],
-        "grammars": [{
+        "grammars": [
+          {
             "language": "slime",
             "scopeName": "text.slime",
-            "path": "./syntaxes/slime.tmLanguage"
-        }]
+            "path": "./syntaxes/slime.json"
+          },
+          {
+            "scopeName": "source.elixir.sheex",
+            "path": "./syntaxes/elixir-sheex.json",
+            "injectTo": [
+              "source.elixir"
+            ]
+          }
+        ]
     }
 }
