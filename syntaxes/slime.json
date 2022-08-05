@@ -1,0 +1,498 @@
+{
+  "fileTypes" : [
+    "slime"
+  ],
+  "foldingStartMarker" : "^\\s*([-%#\\:\\.\\w\\=].*)\\s$",
+  "foldingStopMarker" : "^\\s*$",
+  "keyEquivalent" : "^~S",
+  "name" : "Slime",
+  "patterns" : [
+    {
+      "begin" : "^(\\s*)(elixir):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.elixir.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "source.elixir.embedded.html",
+      "patterns" : [
+        {
+          "include" : "source.elixir"
+        },
+        {
+          "include" : "#continuation"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(javascript):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.javascript.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.javascript.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.js"
+        }
+      ]
+    },
+    {
+      "begin" : "^(---)\\s*\\n",
+      "beginCaptures" : {
+        "1" : {
+          "name" : "storage.frontmatter.slime"
+        }
+      },
+      "end" : "^(---)\\s*\\n",
+      "endCaptures" : {
+        "1" : {
+          "name" : "storage.frontmatter.slime"
+        }
+      },
+      "name" : "source.yaml.meta.slime",
+      "patterns" : [
+        {
+          "include" : "source.yaml"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(coffee):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.coffeescript.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.coffeescript.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.coffee"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(markdown):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.markdown.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.markdown.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.md"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(css):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.css.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.css.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.css"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(sass):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.sass.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.sass.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.sass"
+        }
+      ]
+    },
+    {
+      "begin" : "^(\\s*)(scss):$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "constant.language.name.scss.filter.slime"
+        }
+      },
+      "end" : "^(?!(\\1\\s)|\\s*$)",
+      "name" : "text.scss.filter.slime",
+      "patterns" : [
+        {
+          "include" : "source.sass"
+        }
+      ]
+    },
+    {
+      "captures" : {
+        "1" : {
+          "name" : "punctuation.definition.prolog.slime"
+        }
+      },
+      "match" : "^(! )($|\\s.*)",
+      "name" : "meta.prolog.slime"
+    },
+    {
+      "captures" : {
+        "1" : {
+          "name" : "punctuation.section.comment.slime"
+        }
+      },
+      "match" : "^\\s*(\/)\\s*\\S.*$\\n?",
+      "name" : "comment.line.slash.slime"
+    },
+    {
+      "begin" : "^(\\s*)(\/)\\s*$",
+      "beginCaptures" : {
+        "2" : {
+          "name" : "punctuation.section.comment.slime"
+        }
+      },
+      "end" : "^(?!\\1  )",
+      "name" : "comment.block.slime",
+      "patterns" : [
+        {
+          "include" : "text.slime"
+        }
+      ]
+    },
+    {
+      "begin" : "^\\s*(?===|=|-|~)",
+      "end" : "$",
+      "patterns" : [
+        {
+          "include" : "#elixirline"
+        }
+      ]
+    },
+    {
+      "include" : "#inline-html-tag"
+    },
+    {
+      "include" : "#normal-html-tag"
+    },
+    {
+      "include" : "#embedded-elixir"
+    },
+    {
+      "begin" : "^\\s*([\\w.#_-]*[\\w]+)\\s*",
+      "captures" : {
+        "0" : {
+          "name" : "entity.name.tag.slime"
+        }
+      },
+      "end" : "$|(?!\\.|#|\\{|\\[|=|-|~|\/)",
+      "patterns" : [
+        {
+          "begin" : "\\{(?=.*\\}|.*\\|\\s*$)",
+          "end" : "\\}|$|^(?!.*\\|\\s*$)",
+          "name" : "meta.section.attributes.slime",
+          "patterns" : [
+            {
+              "include" : "source.elixir"
+            },
+            {
+              "include" : "#continuation"
+            }
+          ]
+        },
+        {
+          "begin" : "\\[(?=.*\\]|.*\\|\\s*$)",
+          "end" : "\\]|$|^(?!.*\\|\\s*$)",
+          "name" : "meta.section.object.slime",
+          "patterns" : [
+            {
+              "include" : "source.elixir"
+            },
+            {
+              "include" : "#continuation"
+            }
+          ]
+        },
+        {
+          "include" : "#elixirline"
+        },
+        {
+          "match" : "\/",
+          "name" : "punctuation.terminator.tag.slime"
+        }
+      ]
+    },
+    {
+      "captures" : {
+        "1" : {
+          "name" : "meta.escape.slime"
+        }
+      },
+      "match" : "^\\s*(\\\\.)"
+    },
+    {
+      "begin" : "^\\s*(?=\\||')",
+      "end" : "$",
+      "patterns" : [
+        {
+          "include" : "#embedded-elixir"
+        },
+        {
+          "include" : "text.html.basic"
+        }
+      ]
+    }
+  ],
+  "repository" : {
+    "continuation" : {
+      "captures" : {
+        "1" : {
+          "name" : "punctuation.separator.continuation.slime"
+        }
+      },
+      "match" : "([\\\\,])\\s*\\n"
+    },
+    "elixirline" : {
+      "begin" : "(==|=)(<>|><|<'|'<|<|>|')?|-",
+      "contentName" : "source.elixir.embedded.haml",
+      "end" : "((do|\\{)( \\|[^|]+\\|)?)$|$|^(?!.*\\|\\s*$)",
+      "endCaptures" : {
+        "1" : {
+          "name" : "source.elixir.embedded.html"
+        },
+        "2" : {
+          "name" : "keyword.control.elixir.start-block"
+        }
+      },
+      "name" : "meta.line.elixir.haml",
+      "patterns" : [
+        {
+          "comment" : "Hack to let elixir comments work in this context properly",
+          "match" : "#.*$",
+          "name" : "comment.line.number-sign.elixir"
+        },
+        {
+          "include" : "source.elixir"
+        },
+        {
+          "include" : "#continuation"
+        }
+      ]
+    },
+    "embedded-elixir" : {
+      "begin" : "(?<!\\\\)#\\{{1,2}",
+      "beginCaptures" : {
+        "0" : {
+          "name" : "punctuation.section.embedded.elixir"
+        }
+      },
+      "end" : "\\}{1,2}",
+      "endCaptures" : {
+        "0" : {
+          "name" : "punctuation.section.embedded.elixir"
+        }
+      },
+      "name" : "source.elixir.embedded.html",
+      "patterns" : [
+        {
+          "include" : "source.elixir"
+        }
+      ]
+    },
+    "entities" : {
+      "patterns" : [
+        {
+          "captures" : {
+            "1" : {
+              "name" : "punctuation.definition.entity.html"
+            },
+            "3" : {
+              "name" : "punctuation.definition.entity.html"
+            }
+          },
+          "match" : "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)",
+          "name" : "constant.character.entity.html"
+        },
+        {
+          "match" : "&",
+          "name" : "invalid.illegal.bad-ampersand.html"
+        }
+      ]
+    },
+    "inline-html-tag" : {
+      "begin" : "^(\\s*([\\w.#_-]+( [\\w.#_-]+=(\".*?\"))*: )*)([\\w.#_-]+( [\\w.#_-]+=(\".*?\"))*:)(?=\\s)",
+      "captures" : {
+        "1" : {
+          "name" : "entity.name.tag.slime"
+        },
+        "2" : {
+          "name" : "entity.name.tag.slime"
+        },
+        "3" : {
+          "name" : "entity.name.tag.slime"
+        },
+        "4" : {
+          "name" : "string.quoted.double.html"
+        },
+        "5" : {
+          "name" : "entity.name.tag.slime"
+        },
+        "6" : {
+          "name" : "entity.name.tag.slime"
+        },
+        "7" : {
+          "name" : "string.quoted.double.html"
+        }
+      },
+      "end" : "$",
+      "patterns" : [
+        {
+          "include" : "#normal-inline-html-tag"
+        },
+        {
+          "include" : "#tag-stuff"
+        }
+      ]
+    },
+    "interpolated-elixir" : {
+      "begin" : "=(?=\\b)",
+      "end" : "\\s|\\w$",
+      "name" : "source.elixir.embedded.html"
+    },
+    "normal-html-tag" : {
+      "begin" : "([\\w:.#_-]+=)",
+      "captures" : {
+        "1" : {
+          "name" : "entity.name.tag.slime"
+        }
+      },
+      "end" : "$",
+      "patterns" : [
+        {
+          "include" : "#tag-stuff"
+        },
+        {
+          "include" : "#string-double-quoted"
+        },
+        {
+          "include" : "#string-single-quoted"
+        }
+      ]
+    },
+    "normal-inline-html-tag" : {
+      "begin" : "([\\w.#_-:]+)",
+      "captures" : {
+        "1" : {
+          "name" : "entity.name.tag.slime"
+        }
+      },
+      "end" : "$",
+      "patterns" : [
+        {
+          "include" : "#tag-stuff"
+        }
+      ]
+    },
+    "string-double-quoted" : {
+      "begin" : "\"",
+      "beginCaptures" : {
+        "0" : {
+          "name" : "punctuation.definition.string.begin.html"
+        }
+      },
+      "contentName" : "meta.toc-list.id.html",
+      "end" : "\"",
+      "endCaptures" : {
+        "0" : {
+          "name" : "punctuation.definition.string.end.html"
+        }
+      },
+      "name" : "string.quoted.double.html",
+      "patterns" : [
+        {
+          "include" : "#embedded-elixir"
+        },
+        {
+          "include" : "#entities"
+        }
+      ]
+    },
+    "string-single-quoted" : {
+      "begin" : "'",
+      "beginCaptures" : {
+        "0" : {
+          "name" : "punctuation.definition.string.begin.html"
+        }
+      },
+      "contentName" : "meta.toc-list.id.html",
+      "end" : "'",
+      "endCaptures" : {
+        "0" : {
+          "name" : "punctuation.definition.string.end.html"
+        }
+      },
+      "name" : "string.quoted.single.html",
+      "patterns" : [
+        {
+          "include" : "#embedded-elixir"
+        },
+        {
+          "include" : "#entities"
+        }
+      ]
+    },
+    "tag-id-attribute" : {
+      "begin" : "\\b(id)\\b\\s*(=)",
+      "captures" : {
+        "1" : {
+          "name" : "entity.other.attribute-name.id.html"
+        },
+        "2" : {
+          "name" : "punctuation.separator.key-value.html"
+        }
+      },
+      "end" : "(?<='|\")",
+      "name" : "meta.attribute-with-value.id.html",
+      "patterns" : [
+        {
+          "include" : "#string-double-quoted"
+        },
+        {
+          "include" : "#string-single-quoted"
+        }
+      ]
+    },
+    "tag-stuff" : {
+      "patterns" : [
+        {
+          "include" : "#inline-html-tag"
+        },
+        {
+          "include" : "#normal-html-tag"
+        },
+        {
+          "include" : "#tag-id-attribute"
+        },
+        {
+          "include" : "#interpolated-elixir"
+        },
+        {
+          "include" : "#elixirline"
+        },
+        {
+          "include" : "#embedded-elixir"
+        }
+      ]
+    }
+  },
+  "scopeName" : "text.slime",
+  "uuid" : "0bd961a8-e732-417a-8b46-bf6d37cb935e"
+}
